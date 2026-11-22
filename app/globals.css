@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-accent: #4f46e5;
+  --color-accent-dark: #4338ca;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-comfortaa), var(--font-poppins), ui-sans-serif, sans-serif;
+}
+
+html {
+  font-size: 15px;
+}
+@media (max-width: 380px) {
+  html {
+    font-size: 14px;
+  }
+}
+html,
+body {
+  overflow-x: hidden;
+  background: #f8fafc;
+  color: #0f172a;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.watermark {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.watermark span {
+  transform: rotate(-28deg);
+  font-size: clamp(28px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #0f172a;
+  opacity: 0.035;
+  white-space: nowrap;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .print-main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .watermark span {
+    opacity: 0.06;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+@media print {
+  .print-area {
+    width: 100% !important;
+    min-width: 0 !important;
+    zoom: 1 !important;
+  }
+}
+
+h1,
+h2,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
